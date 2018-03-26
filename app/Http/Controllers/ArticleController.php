@@ -13,6 +13,7 @@ class ArticleController extends Controller
 
         $articles = Article::with('cate')->published()->orderBy('published_at', 'asc')->paginate($pagesize);
 
-        dd($articles);
+        // return view('home.test');
+        return view('home.index');
     }
 }
