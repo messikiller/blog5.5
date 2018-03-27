@@ -18,19 +18,20 @@
 
                     <div id="boxes">
 
+                        @foreach ($articles as $article)
                         <div class="box">
                             <div class="box-header">
-                                <a href="#">MySQL InnoDB 事务隔离级别理解</a>
+                                <a href="#">{{ $article->title }}</a>
                             </div>
                             <hr class="box-divider">
                             <div class="box-body">
-                                <p>事务隔离级别分为：未提交读（Read Uncommitted，RU），提交读（Read Committed，RC），可重复读（Repeatable Read，RR）和串行化（Serializable）</p>
+                                {!! $article->summary !!}
                             </div>
                             <div class="box-footer">
                                 <div class="box-footer-metas">
-                                    <span class="footer-meta"><i class="fa fa-calendar"></i>&nbsp;2017-12-23</span>
+                                    <span class="footer-meta"><i class="fa fa-calendar"></i>&nbsp;{{ date('Y-m-d', $article->published_at) }}</span>
                                     <span>&nbsp;/&nbsp;</span>
-                                    <span class="footer-meta"><i class="fa fa-eye"></i>&nbsp;25</span>
+                                    <span class="footer-meta"><i class="fa fa-eye"></i>&nbsp;{{ $article->read_num }}</span>
                                     <span>&nbsp;/&nbsp;</span>
                                     <span class="footer-meta"><i class="fa fa-list-ul"></i>&nbsp;PHP</span>
                                     <span>&nbsp;/&nbsp;</span>
@@ -43,12 +44,72 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
+
 
                     </div>
 
                 </div>
+
                 <div class="col-md-4">
+
+                    <div id="sider">
+
+                        <div class="sider-box">
+                            <div class="sider-box-title">
+                                <i class="fa fa-bookmark"></i>
+                                &nbsp;微语
+                            </div>
+                            <div class="sider-box-divider"></div>
+                            <div class="sider-box-content">
+                                <div class="sider-motto">
+                                    一万年来谁著史，八千里外觅封侯
+                                </div>
+                                <div class="sider-submotto">
+                                    —— 李鸿章
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sider-box">
+                            <div class="sider-box-title">
+                                <i class="fa fa-bookmark"></i>
+                                &nbsp;微语
+                            </div>
+                            <div class="sider-box-divider"></div>
+                            <div class="sider-box-content">
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                            </div>
+                        </div>
+
+                        <div class="sider-box">
+                            <div class="sider-box-title">
+                                <i class="fa fa-bookmark"></i>
+                                &nbsp;微语
+                            </div>
+                            <div class="sider-box-divider"></div>
+                            <div class="sider-box-content">
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>

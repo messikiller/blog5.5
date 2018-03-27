@@ -109,4 +109,64 @@ $header-png-url: url('/images/header.png');
             }
         }
     }
+
+    #sider {
+        .sider-box {
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid darken($navbar-default-bg, 10%);
+            background-color: $navbar-default-bg;
+
+            .sider-box-title {
+                font-size: 15px;
+            }
+
+            .sider-box-divider {
+                margin: 8px 0 8px 0;
+                height: 1px;
+                background-color: darken($navbar-default-bg, 10%);
+
+                &:before {
+                    content: " ";
+                    background-color: $brand-primary;
+                    width: 30%;
+                    height: 2px;
+                    float: left;
+                    position: relative;
+                    top: -1px;
+                }
+            }
+
+            .sider-box-content {
+                .sider-motto {
+                    text-indent: 2em;
+                    line-height: 2;
+                    padding: 15px 10px 5px 0;
+                }
+
+                .sider-submotto {
+                    color: lighten($text-color, 30%);
+                    text-align: right;
+                    font-size: 12px;
+                    padding: 5px 10px;
+                }
+
+                a.sider-list-item {
+                    display: block;
+                    font-size: 14px;
+                    margin-bottom: 7px;
+                    padding-left: 5px;
+                    color: $text-color;
+
+                    &:hover {
+                        color: $brand-primary;
+                    }
+
+                    &:first-child {
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -9,11 +9,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $pagesize = 20;
+        $pagesize = 6;
+        $articles = Article::with('cate')->published()->orderBy('published_at', 'desc')->paginate($pagesize);
 
-        $articles = Article::with('cate')->published()->orderBy('published_at', 'asc')->paginate($pagesize);
-
-        // return view('home.test');
-        return view('home.index');
+        return view('home.index', compact('articles'));
     }
 }
