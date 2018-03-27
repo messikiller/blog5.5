@@ -107,6 +107,14 @@ $header-png-url: url('/images/header.png');
                     }
                 }
             }
+
+            #pager {
+                text-align: center;
+                
+                li > a, li > span {
+                    margin: 0 5px;
+                }
+            }
         }
     }
 
@@ -156,7 +164,7 @@ $header-png-url: url('/images/header.png');
                     font-size: 14px;
                     margin-bottom: 7px;
                     padding-left: 5px;
-                    color: $text-color;
+                    color: lighten($text-color, 10%);
 
                     &:hover {
                         color: $brand-primary;
