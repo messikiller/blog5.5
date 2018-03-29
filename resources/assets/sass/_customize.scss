@@ -27,6 +27,34 @@ $header-png-url: url('/images/header.png');
 
                         &:hover {
                             color: $brand-primary;
+                            &:hover > i {
+                                transform: rotate(-90deg);
+                                transition: transform 0.2s ease;
+                            }
+                        }
+                    }
+
+                    &:hover > ul.children {
+                        visibility: visible;
+                        opacity: 1;
+                        transition: all 0.2s ease-in;
+                    }
+
+                    ul.children {
+                        visibility: hidden;
+                        opacity: 0;
+                        position: absolute;
+                        z-index: 999;
+                        width: inherit;
+                        background-color: $navbar-default-bg;
+                        border-bottom: 1px solid darken($navbar-default-bg, 10%);
+                        border-left: 1px solid darken($navbar-default-bg, 10%);
+                        border-right: 1px solid darken($navbar-default-bg, 10%);
+
+                        & > li {
+                            display: block;
+                            line-height: 40px;
+                            margin: 0;
                         }
                     }
                 }
@@ -40,8 +68,9 @@ $header-png-url: url('/images/header.png');
             .nav-list {
                 text-align: center;
                 li {
-                    width: 120px;
+                    width: 150px;
                     line-height: 50px;
+                    margin: 0 20px;
                 }
             }
         }
@@ -62,7 +91,7 @@ $header-png-url: url('/images/header.png');
                     a {
                         color: $text-color;
                         line-height: 50px;
-                        font-size: 18px;
+                        font-size: 16px;
                         display: block;
                         text-align: center;
 
@@ -80,7 +109,7 @@ $header-png-url: url('/images/header.png');
                     margin: 10px 0 25px 0;
                     line-height: 27px;
                     text-indent: 2em;
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
                 .box-footer {
@@ -161,7 +190,7 @@ $header-png-url: url('/images/header.png');
 
                 a.sider-list-item {
                     display: block;
-                    font-size: 14px;
+                    font-size: 13px;
                     margin-bottom: 7px;
                     padding-left: 5px;
                     color: lighten($text-color, 10%);

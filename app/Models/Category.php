@@ -10,5 +10,9 @@ class Category extends Model
     protected $primaryKey = 'id';
 
     public $timestamps = false;
-    
+
+    public function children()
+    {
+        return $this->hasMany(self::class, 'pid', 'id');
+    }
 }

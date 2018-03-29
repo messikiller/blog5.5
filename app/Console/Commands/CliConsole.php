@@ -90,4 +90,39 @@ class CliConsole extends Command
 
         $this->db->table('t_categories')->insert($inserts);
     }
+
+    public function importTag()
+    {
+        $tags = $this->lb->table('lb_tags')->get();
+
+        $inserts = [];
+        foreach ($tags as $tag)
+        {
+            $inserts[] = [
+                'id'         => $tag->Id,
+                'title'      => $tag->name,
+                'color'      => $tag->color,
+                'created_at' => strtotime($tag->created_at),
+            ];
+        }
+
+        $this->db->table('t_tags')->insert($inserts);
+    }
+
+    public function importArticleTag()
+    {
+        $articleTags = $this->lb->table('lb_article_tags')->get();
+
+        $inserts = [];
+        foreach ($articleTags as $articleTag)
+        {
+            $inserts[] = [
+                'article_id' => $articleTag->article_id,
+                'tag_id'     => $articleTag->tag_id,
+                'created_at' => time(),
+            ];
+        }
+
+        $this->db->table('t_article_tags')->insert($inserts);
+    }
 }

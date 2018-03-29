@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
 use App\Models\Category;
+use App\Models\ArticleTag;
 
 class Article extends Model
 {
