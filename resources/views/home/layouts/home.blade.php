@@ -15,12 +15,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @foreach ($alerts as $alert)
-                        <div class="alert alert-{{ $alert['type'] }}" role="alert">
-                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&ensp;
-                            {!! $alert['content'] !!}
-                        </div>
-                    @endforeach
 
                     @yield('content')
 
@@ -41,21 +35,8 @@
     </div>
 </div>
 <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
-<script type="text/javascript">
-var vm = new Vue({
-    el: '#app',
-    mounted () {
-      window.addEventListener('scroll', this.handleScroll);
-    },
-    data: {
-        sticky: false
-    },
-    methods: {
-        handleScroll: function (event) {
-            this.sticky = document.documentElement.scrollTop >= 300 ? true : false;
-        }
-    }
-});
-</script>
+
+@yield('script')
+
 </body>
 </html>

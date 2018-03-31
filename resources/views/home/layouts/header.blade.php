@@ -13,7 +13,7 @@
     <div class="header-navbar" :class="{'sticky-nav': sticky}">
         <ul class="nav-list">
             <li
-                @if ($active_cate_pid == 0)
+                @if (empty($active_cate_pid))
                     class="active"
                 @endif
             ><a href="{{ route('home.index') }}">home</a></li>
@@ -22,7 +22,7 @@
                     @continue;
                 @endif
                 <li
-                    @if ($active_cate_pid == $cate->id)
+                    @if (isset($active_cate_pid) && $active_cate_pid == $cate->id)
                         class="active"
                     @endif
                 >

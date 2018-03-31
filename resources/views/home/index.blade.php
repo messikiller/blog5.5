@@ -2,11 +2,17 @@
 
 @section('content')
 <div id="boxes">
+    @foreach ($alerts as $alert)
+        <div class="alert alert-{{ $alert['type'] }}" role="alert">
+            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&ensp;
+            {!! $alert['content'] !!}
+        </div>
+    @endforeach
 
     @foreach ($articles as $article)
         <div class="box">
         <div class="box-header">
-            <a href="#">{{ $article->title }}</a>
+            <a href="{{ route('home.view', $article->id) }}">{{ $article->title }}</a>
         </div>
         <hr class="box-divider">
         <div class="box-body">
@@ -85,4 +91,23 @@
     </div>
 </div>
 
+@endsection
+
+@section('script')
+<script type="text/javascript">
+var vm = new Vue({
+    el: '#app',
+    mounted () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    data: {
+        sticky: false
+    },
+    methods: {
+        handleScroll: function (event) {
+            this.sticky = document.documentElement.scrollTop >= 300 ? true : false;
+        }
+    }
+});
+</script>
 @endsection

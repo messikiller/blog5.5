@@ -19,7 +19,9 @@ class ArticleController extends Controller
         $siderTags     = ArticleService::getSiderTags();
         $blogrolls     = ArticleService::getFooterBlogrolls();
 
-        view()->composer(['home.index'], function ($view) use ($navCates, $siderCates, $siderArchives, $siderTags, $blogrolls) {
+        $active_cate_pid = 0;
+
+        view()->composer(['home.index', 'home.view'], function ($view) use ($navCates, $siderCates, $siderArchives, $siderTags, $blogrolls) {
             $view->with(compact('navCates', 'siderCates', 'siderArchives', 'siderTags', 'blogrolls'));
         });
     }
@@ -30,7 +32,6 @@ class ArticleController extends Controller
 
         $query = Article::query()->with('cate', 'tags')->published()->orderBy('published_at', 'desc');
 
-        $active_cate_pid = 0;
         $filter = $alerts = [];
 
         if (($filter_cate = $request->input('filter_cate', false)) !== false) {
@@ -68,7 +69,7 @@ class ArticleController extends Controller
             $active_tag = Tag::find($filter_tag);
 
             $alerts[] = [
-                'type'    => 'info',
+                'type'    => 'warning',
                 'content' => '您正在查看标签：<b>'. $active_tag->title .'</b> 下的全部文章'
             ];
         }
@@ -76,5 +77,12 @@ class ArticleController extends Controller
         $articles = $query->paginate($pagesize)->appends($filter);
 
         return view('home.index', compact('articles', 'filter', 'active_cate_pid', 'alerts'));
+    }
+
+    public function view($id)
+    {
+        $article = Article::find($id);
+
+        return view('home.view', compact('article'));
     }
 }

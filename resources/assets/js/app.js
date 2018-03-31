@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.hljs = require('highlight.js');
+
+import 'highlight.js/styles/atom-one-dark.css';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
