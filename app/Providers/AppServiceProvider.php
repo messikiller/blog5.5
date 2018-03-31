@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Config;
+use Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadHomeConfig();
     }
 
     /**
@@ -24,5 +26,20 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    private function loadHomeConfig()
+    {
+        $configs = Cache::remember(config('define.cache.home_configs.key'), config('define.cache.home_configs.minutes'), function () {
+            return Config::orderBy('created_at', 'desc')->get();
+        });
+
+        $map = [];
+        foreach ($configs as $config)
+        {
+            $map[$config->path] = $config->value;
+        }
+
+        config($map);
     }
 }

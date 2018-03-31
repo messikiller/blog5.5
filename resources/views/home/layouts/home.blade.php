@@ -15,6 +15,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+                    @foreach ($alerts as $alert)
+                        <div class="alert alert-{{ $alert['type'] }}" role="alert">
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>&ensp;
+                            {!! $alert['content'] !!}
+                        </div>
+                    @endforeach
 
                     @yield('content')
 
