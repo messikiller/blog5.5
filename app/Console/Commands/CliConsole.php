@@ -125,4 +125,22 @@ class CliConsole extends Command
 
         $this->db->table('t_article_tags')->insert($inserts);
     }
+
+    public function importBlogroll()
+    {
+        $blogrolls = $this->lb->table('lb_blogrolls')->get();
+
+        $inserts = [];
+        foreach ($blogrolls as $blogroll)
+        {
+            $inserts[] = [
+                'id'         => $blogroll->Id,
+                'title'      => $blogroll->title,
+                'link'       => $blogroll->link,
+                'created_at' => strtotime($blogroll->created_at),
+            ];
+        }
+
+        $this->db->table('t_blogrolls')->insert($inserts);
+    }
 }

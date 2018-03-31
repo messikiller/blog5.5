@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Article;
 
 class Category extends Model
 {
@@ -14,5 +15,10 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(self::class, 'pid', 'id');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'cate_id', 'id');
     }
 }

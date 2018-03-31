@@ -11,6 +11,33 @@ $header-png-url: url('/images/header.png');
         .header-bg {
             height: 300px;
             background: $header-png-url;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .header-logo-container {
+                width: 200px;
+                height: 180px;
+                text-align: center;
+
+                .header-logo {
+                    border-radius: 50px;
+                }
+
+                .header-motto {
+                    margin-top: 10px;
+
+                    .header-motto-text {
+                        color: #ffffff;
+                        line-height: 30px;
+                        font-size: 13px;
+                    }
+
+                    .header-motto-divider {
+                        border-bottom: 1px solid #ffffff;
+                    }
+                }
+            }
         }
         .header-navbar {
             background-color: $navbar-default-bg;
@@ -73,6 +100,12 @@ $header-png-url: url('/images/header.png');
                     margin: 0 20px;
                 }
             }
+        }
+        .sticky-nav {
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            top: 0;
         }
     }
 
@@ -141,7 +174,7 @@ $header-png-url: url('/images/header.png');
                 text-align: center;
 
                 li > a, li > span {
-                    margin: 0 5px;
+                    margin: 0 2px;
                 }
             }
         }
@@ -191,7 +224,7 @@ $header-png-url: url('/images/header.png');
                 a.sider-list-item {
                     display: block;
                     font-size: 13px;
-                    margin-bottom: 7px;
+                    margin-bottom: 9px;
                     padding-left: 5px;
                     color: lighten($text-color, 10%);
 
@@ -200,8 +233,14 @@ $header-png-url: url('/images/header.png');
                     }
 
                     &:first-child {
-                        margin-top: 5px;
+                        margin-top: 15px;
                     }
+                }
+
+                .sider-list-tag {
+                    border-width: 2px;
+                    font-weight: bold;
+                    margin: 5px;
                 }
             }
         }

@@ -18,35 +18,45 @@
 
     <div class="sider-box">
         <div class="sider-box-title">
-            <i class="fa fa-bookmark"></i>
-            &nbsp;微语
+            <i class="fa fa-list-ul"></i>
+            &nbsp;分类
         </div>
         <div class="sider-box-divider"></div>
         <div class="sider-box-content">
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+            @foreach ($siderCates as $cate)
+                <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;{{ $cate->title }}（{{ $cate->articles_count }}）</a>
+            @endforeach
         </div>
     </div>
 
     <div class="sider-box">
         <div class="sider-box-title">
-            <i class="fa fa-bookmark"></i>
-            &nbsp;微语
+            <i class="fa fa-folder-open"></i>
+            &nbsp;归档
         </div>
         <div class="sider-box-divider"></div>
         <div class="sider-box-content">
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
-            <a href="#" class="sider-list-item"><i class="fa fa-angle-double-right"></i>&nbsp;Redis(5)</a>
+            @foreach ($siderArchives as $month => $archive)
+                <a href="#" class="sider-list-item"><i class="fa fa-calendar"></i>&nbsp;{{ date('Y年m月', $month) }}（{{ $archive->count() }}）</a>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="sider-box">
+        <div class="sider-box-title">
+            <i class="fa fa-folder-open"></i>
+            &nbsp;标签云
+        </div>
+        <div class="sider-box-divider"></div>
+        <div class="sider-box-content">
+            @foreach ($siderTags as $tag)
+                <a href="#"
+                    class="btn sider-list-tag"
+                    style="color: {{ $tag->color }};border-color: {{ $tag->color }};"
+                    onmouseover="this.style.cssText='background-color: {{ $tag->color }};color: #ffffff;'"
+                    onmouseout="this.style.cssText='color: {{ $tag->color }};border-color: {{ $tag->color }};'"
+                >{{ $tag->title }}</a>
+            @endforeach
         </div>
     </div>
 

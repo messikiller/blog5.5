@@ -29,30 +29,9 @@
                 </div>
                 <div class="footer-box-divider"></div>
                 <div class="footer-box-content">
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
-                    <a href="#" class="footer-friend-link">Sadscreeper</a>
-                    <a href="#" class="footer-friend-link">徐立春</a>
-                    <a href="#" class="footer-friend-link">Falter UI</a>
-                    <a href="#" class="footer-friend-link">SQ热r sd</a>
+                    @foreach ($blogrolls as $blogroll)
+                        <a href="{{ $blogroll->link }}" target="blank" class="footer-friend-link">{{ $blogroll->title }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
