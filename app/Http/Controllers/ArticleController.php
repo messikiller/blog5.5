@@ -83,6 +83,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        return view('home.view', compact('article'));
+        $point    = $article->published_at;
+        $previous = Article::normal()->published()->where('published_at', '>', $point)->orderBy('created_at', 'asc')->first();
+        $next     = Article::normal()->published()->where('published_at', '<', $point)->orderBy('created_at', 'desc')->first();
+
+        return view('home.view', compact('article', 'next', 'previous'));
     }
 }

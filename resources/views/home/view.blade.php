@@ -30,6 +30,44 @@
 
     </div>
 
+    <div class="content-footer-divider"></div>
+
+    <div class="content-footer-nav">
+        <a class="content-nav-btn content-nav-left"
+            href="{{ empty($previous) ? 'javascript:void(0)' : route('home.view', $previous->id) }}"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{ empty($previous) ? '无' : $previous->title }}"
+        >
+                <i class="fa fa-chevron-left"></i>&nbsp;
+                上一篇：{{ empty($previous) ? '无' : $previous->title }}
+        </a>
+        <a
+            href="{{ empty($next) ? 'javascript:void(0)' : route('home.view', $next->id) }}"
+            class="content-nav-btn content-nav-right"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{ empty($next) ? '无' : $next->title }}"
+        >
+                下一篇：{{ empty($next) ? '无' : $next->title }}
+                &nbsp;<i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+
+    <div class="content-copyright">
+        本文链接：<a href="{{ route('home.view', $article->id) }}" target="_blank">{{ route('home.view', $article->id) }}</a>，欢迎转载，请注明来源<i class="fa fa-creative-commons"></i>&nbsp;<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">创意共享3.0许可证</a>
+    </div>
+
+    <div class="content-share">
+        <span><i class="fa fa-share-alt"></i>&nbsp;分享：</span>
+        <span class="social-share"
+            data-url="{{ route('home.view', $article->id) }}"
+            data-title="{{ $article->title }}"
+            data-description="{{ $article->summary_original }}"
+        ></span>
+    </div>
+
+
 </div>
 @endsection
 
@@ -40,6 +78,7 @@ var vm = new Vue({
     mounted () {
       window.addEventListener('scroll', this.handleScroll);
       hljs.initHighlightingOnLoad();
+      $('[data-toggle="tooltip"]').tooltip();
     },
     data: {
         sticky: false

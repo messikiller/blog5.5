@@ -253,6 +253,55 @@ $header-png-url: url('/images/header.png');
                     }
                 }
             }
+
+            .content-footer-divider {
+                border-top: 1px dashed #d7d7d7;
+                margin-bottom: 20px;
+            }
+
+            .content-footer-nav {
+                margin-bottom: 20px;
+                .content-nav-btn {
+                    display: inline-block;
+                    width: 49%;
+                    height: 40px;
+                    line-height: 40px;
+                    border: 2px solid $brand-primary;
+                    padding: 0 20px;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+
+                    &:hover {
+                        background-color: $brand-primary;
+                        color: #ffffff;
+                    }
+                }
+
+                .content-nav-left {
+                    text-align: left;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                }
+
+                .content-nav-right {
+                    float: right;
+                    text-align: right;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+                }
+            }
+
+            .content-copyright {
+                background-color: #f8f9fa;
+                border: 1px solid #e9ecef;
+                font-size: 13px;
+                padding: 20px;
+            }
+
+            .content-share {
+                margin: 20px 0;
+            }
         }
     }
 
