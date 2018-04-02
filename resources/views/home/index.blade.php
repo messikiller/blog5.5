@@ -35,7 +35,7 @@
                 @endif
             </div>
             <div class="box-footer-btn">
-                <a href="#" class="btn btn-primary btn-more"><i class="fa fa-search"></i>&nbsp;阅读全文</a>
+                <a href="{{ route('home.view', $article->id) }}" class="btn btn-primary btn-more"><i class="fa fa-search"></i>&nbsp;阅读全文</a>
             </div>
         </div>
     </div>
