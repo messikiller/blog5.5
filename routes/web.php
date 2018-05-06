@@ -13,3 +13,5 @@
 
 Route::get('/', 'ArticleController@index')->name('home.index');
 Route::get('/view/{id}', 'ArticleController@view')->name('home.view');
+
+Route::get('/login', 'Admin\AuthController@login');

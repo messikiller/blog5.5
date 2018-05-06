@@ -45,7 +45,6 @@
         <nav aria-label="Page navigation">
           <ul class="pagination">
 
-
                 @if ($articles->currentPage() == $articles->firstItem())
                     <li class="disabled">
                       <span aria-label="Previous">

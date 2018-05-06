@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix
+    // start home assets
     .js('resources/assets/js/app.js', 'public/js/app.js')
    .sass('resources/assets/sass/app.scss', 'public/css/app.css')
    .scripts([
@@ -25,4 +26,16 @@ mix
    ], 'public/css/app.css')
    .copy('node_modules/font-awesome/fonts/*', 'public/fonts/')
    .copy('node_modules/social-share.js/dist/fonts/*', 'public/fonts/')
+
+   // start admin assets
+   .js('resources/assets/js/admin.js', 'public/js/admin.js')
+   .sass('resources/assets/sass/admin.scss', 'public/css/admin.css')
+   .scripts([
+       'public/js/admin.js'
+   ], 'public/js/admin.js')
+   .styles([
+       'public/css/admin.css',
+       'node_modules/font-awesome/css/font-awesome.min.css'
+   ], 'public/css/admin.css')
+   .version()
 ;

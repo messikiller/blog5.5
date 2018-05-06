@@ -303,6 +303,13 @@ $header-png-url: url('/images/header.png');
                 margin: 20px 0;
             }
         }
+
+        #comments {
+            padding: 20px 35px;
+            margin-bottom: 20px;
+            border: 1px solid darken($navbar-default-bg, 10%);
+            background-color: $navbar-default-bg;
+        }
     }
 
     #sider {

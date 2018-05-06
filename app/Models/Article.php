@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
 use App\Models\Category;
 use App\Models\ArticleTag;
+use App\Models\Comment;
 
 class Article extends Model
 {
@@ -32,5 +33,10 @@ class Article extends Model
     public function cate()
     {
         return $this->belongsTo(Category::class, 'cate_id', 'id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'article_id', 'id');
     }
 }
