@@ -14,6 +14,6 @@ class ArticleController extends Controller
 
     public function add()
     {
-        
+        return view('admin.article.add');
     }
 }

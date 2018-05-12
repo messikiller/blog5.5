@@ -20,8 +20,8 @@ return [
         'icon'  => 'ios-paper',
         'title' => '文章管理',
         'sub'   => [
-            '添加文章' => 'home.index',
-            '文章列表' => 'home.index',
+            '添加文章' => 'admin.article.add',
+            '文章列表' => 'admin.article.index',
         ],
     ],
     [
