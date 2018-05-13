@@ -21,7 +21,7 @@ return [
         'title' => '文章管理',
         'sub'   => [
             '添加文章' => 'admin.article.add',
-            '文章列表' => 'admin.article.index',
+            '文章列表' => 'admin.article.list',
         ],
     ],
     [
@@ -36,8 +36,8 @@ return [
         'icon'  => 'link',
         'title' => '友链管理',
         'sub'   => [
-            '添加友链' => 'home.index',
-            '友链列表' => 'home.index',
+            '添加友链' => 'admin.blogroll.add',
+            '友链列表' => 'admin.blogroll.list',
         ],
     ],
     [

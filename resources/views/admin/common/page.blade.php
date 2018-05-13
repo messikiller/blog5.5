@@ -62,7 +62,21 @@ html, body, #app {
 @yield('script')
 <script type="text/javascript">
 var vm = new Vue(Object.assign({
-    el: '#app'
+    el: '#app',
+    methods: {
+        handlePageChange: function (page) {
+            var url = window.location.href;
+            if (url.indexOf('?') === -1) {
+                url += '?page=1';
+            } else if (url.indexOf('?') + 1 == url.length) {
+                url += 'page=1';
+            } else if (url.indexOf('page=') === -1) {
+                url += '&page=1';
+            }
+
+            window.location.href = url.replace(/page=\d+/, 'page='+page);
+        },
+    }
 }, OPTION));
 </script>
 </body>

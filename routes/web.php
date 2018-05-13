@@ -26,6 +26,12 @@ Route::group([
     Route::get('/', 'IndexController@index')->name('admin.index.index');
     Route::get('/welcome', 'IndexController@welcome')->name('admin.index.welcome');
 
-    Route::get('/article/index', 'ArticleController@index')->name('admin.article.index');
+    Route::get('/article/index', 'ArticleController@index')->name('admin.article.list');
     Route::get('/article/add', 'ArticleController@add')->name('admin.article.add');
+
+    Route::get('/blogroll/list', 'BlogrollController@list')->name('admin.blogroll.list');
+    Route::get('/blogroll/add', 'BlogrollController@add')->name('admin.blogroll.add');
+    Route::post('/blogroll/add', 'BlogrollController@handleAdd')->name('admin.blogroll.add');
+    Route::get('/blogroll/edit/{id}', 'BlogrollController@edit')->name('admin.blogroll.edit');
+    Route::post('/blogroll/edit/{id}', 'BlogrollController@handleEdit')->name('admin.blogroll.edit');
 });
