@@ -26,8 +26,17 @@ Route::group([
     Route::get('/', 'IndexController@index')->name('admin.index.index');
     Route::get('/welcome', 'IndexController@welcome')->name('admin.index.welcome');
 
-    Route::get('/article/index', 'ArticleController@index')->name('admin.article.list');
+    Route::get('/article/index', 'ArticleController@list')->name('admin.article.list');
     Route::get('/article/add', 'ArticleController@add')->name('admin.article.add');
+    Route::post('/article/add', 'ArticleController@handleAdd')->name('admin.article.add');
+    Route::get('/article/edit/{id}', 'ArticleController@edit')->name('admin.article.edit');
+    Route::post('/article/edit/{id}', 'ArticleController@handleEdit')->name('admin.article.edit');
+
+    Route::get('/category/index', 'CategoryController@list')->name('admin.category.list');
+    Route::get('/category/add', 'CategoryController@add')->name('admin.category.add');
+    Route::post('/category/add', 'CategoryController@handleAdd')->name('admin.category.add');
+    Route::get('/category/edit/{id}', 'CategoryController@edit')->name('admin.category.edit');
+    Route::post('/category/edit/{id}', 'CategoryController@handleEdit')->name('admin.category.edit');
 
     Route::get('/blogroll/list', 'BlogrollController@list')->name('admin.blogroll.list');
     Route::get('/blogroll/add', 'BlogrollController@add')->name('admin.blogroll.add');

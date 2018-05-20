@@ -17,6 +17,11 @@ class Category extends Model
         return $this->hasMany(self::class, 'pid', 'id');
     }
 
+    public function father()
+    {
+        return $this->belongsTo(self::class, 'pid', 'id');
+    }
+
     public function articles()
     {
         return $this->hasMany(Article::class, 'cate_id', 'id');

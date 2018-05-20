@@ -4,31 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Models\Category;
 
-class ArticleController extends Controller
+class CategoryController extends Controller
 {
     public function list(Request $request)
     {
         $pagesize = 20;
 
-        $query = Article::query();
+        $query = Category::query();
 
-        $list = $query->with('tags', 'cate', 'comments')
-            ->orderBy('created_at', 'desc')
+        $list = $query->orderBy('created_at', 'desc')
             ->paginate($pagesize);
 
-        return view('admin.article.list', compact('list'));
+        return view('admin.category.list', compact('list'));
     }
 
     public function add()
     {
-        return view('admin.article.add');
+        return view('admin.category.add');
     }
 
     public function handleAdd(Request $request)
     {
-        
+
     }
 
     public function edit($id)

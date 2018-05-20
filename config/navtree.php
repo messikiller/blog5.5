@@ -4,8 +4,8 @@ return [
         'icon'  => 'ios-list-outline',
         'title' => '分类管理',
         'sub'   => [
-            '添加分类' => 'admin.index.welcome',
-            '分类列表' => 'home.index',
+            '添加分类' => 'admin.category.list',
+            '分类列表' => 'admin.category.list',
         ],
     ],
     [

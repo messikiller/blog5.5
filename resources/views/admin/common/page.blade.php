@@ -75,7 +75,7 @@ var vm = new Vue(Object.assign({
             }
 
             window.location.href = url.replace(/page=\d+/, 'page='+page);
-        },
+        }
     }
 }, OPTION));
 </script>
