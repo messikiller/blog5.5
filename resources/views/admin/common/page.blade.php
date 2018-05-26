@@ -9,11 +9,19 @@
 <title>messikiller's blog</title>
 <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
 <style>
-html, body, #app {
-    height: 100%;
+html{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+body{
+    flex: 1;
+    width: 100%;
 }
 
 #app {
+    height: 100%;
     background-color: #f5f7f9;
     display: flex;
     flex-direction: column;
@@ -61,20 +69,31 @@ html, body, #app {
 <script src="{{ mix('js/admin.js') }}"></script>
 @yield('script')
 <script type="text/javascript">
-var vm = new Vue(Object.assign({
+var vm = new Vue(_.merge({
     el: '#app',
     methods: {
         handlePageChange: function (page) {
-            var url = window.location.href;
-            if (url.indexOf('?') === -1) {
-                url += '?page=1';
-            } else if (url.indexOf('?') + 1 == url.length) {
-                url += 'page=1';
-            } else if (url.indexOf('page=') === -1) {
-                url += '&page=1';
+            window.location.href = URL().removeSearch('page').addSearch('page', page).href();
+        },
+        handleSubmitFilter: function () {
+            var _filter = this.filter;
+            var _url = URL(URL().search('').href());
+            for (var i in _filter) {
+                if (_filter.hasOwnProperty(i) && _filter[i] != '') {
+                    var _param = 'filter_' + i;
+                    _url.removeSearch(_param).addSearch(_param, _filter[i]);
+                }
             }
-
-            window.location.href = url.replace(/page=\d+/, 'page='+page);
+            window.location.href = _url.href();
+        },
+        handleResetFilter: function () {
+            var _filter = this.filter;
+            for (var i in _filter) {
+                if (_filter.hasOwnProperty(i)) {
+                    _filter[i] = '';
+                }
+            }
+            this.handleSubmitFilter();
         }
     }
 }, OPTION));

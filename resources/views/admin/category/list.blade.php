@@ -8,6 +8,39 @@
 @endsection
 
 @section('content')
+<Card dis-hover>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <i-form>
+                    <Form-item :label-width="100" label="名称：">
+                        <i-input size="small" v-model="filter.title"></i-input>
+                    </Form-item>
+                </i-form>
+            </div>
+            <div class="col-md-4">
+                <i-form>
+                    <Form-item :label-width="100" label="父类：">
+                        <i-select size="small" v-model="filter.pid">
+                            @foreach ($fathers as $father)
+                                <i-option value="{{ $father->id }}">{{ $father->title }}</i-option>
+                            @endforeach
+                        </i-select>
+                    </Form-item>
+                </i-form>
+            </div>
+            <div class="col-md-12">
+                <i-form>
+                    <Form-item :label-width="100" label="">
+                        <i-button type="primary" size="small" @click="handleSubmitFilter">筛选</i-button>
+                        <i-button type="warning" size="small" @click="handleResetFilter">重置</i-button>
+                    </Form-item>
+                </i-form>
+            </div>
+        </div>
+    </div>
+</Card>
+<div style="height: 15px;"></div>
 <i-table border :columns="columns" :data="table"></i-table>
 <div style="height: 15px;"></div>
 <Page :total="{{ $list->total() }}"
@@ -23,6 +56,10 @@
 <script type="text/javascript">
 var OPTION = {
     data: {
+        filter: {
+            title: '{{ empty($filter['title']) ? '' : $filter['title'] }}',
+            pid: '{{ empty($filter['pid']) ? '' : $filter['pid'] }}'
+        },
         columns: [
             {title: '#', key: 'index'},
             {title: '名称', key: 'title'},
@@ -64,8 +101,8 @@ var OPTION = {
             @endforeach
         ]
     },
-    method: {
-
+    methods: {
+        
     }
 };
 </script>

@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.URL = require('urijs');
 
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';

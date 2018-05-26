@@ -4,7 +4,7 @@ return [
         'icon'  => 'ios-list-outline',
         'title' => '分类管理',
         'sub'   => [
-            '添加分类' => 'admin.category.list',
+            '添加分类' => 'admin.category.add',
             '分类列表' => 'admin.category.list',
         ],
     ],
