@@ -4,79 +4,80 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Blogroll;
+use App\Models\Tag;
 use Exception;
 
-class BlogrollController extends Controller
+class TagController extends Controller
 {
     public function list(Request $request)
     {
+        $query = Tag::query();
+
         $pagesize = 20;
         $filter   = [];
-
-        $query = Blogroll::query();
 
         $this->_queryFilter($request, $query, $filter);
 
         $list = $query->orderBy('created_at', 'desc')->paginate($pagesize);
 
-        return view('admin.blogroll.list', compact('list', 'filter'));
+        return view('admin.tag.list', compact('list', 'filter'));
     }
 
     public function add()
     {
-        return view('admin.blogroll.add');
+        return view('admin.tag.add');
     }
 
     public function handleAdd(Request $request)
     {
         $title = $request->title;
 
-        if (Blogroll::where('title', '=', $title)->count() > 0) {
-            return $this->back_error('名称已存在！');
+        if (Tag::where('title', '=', $title)->count() > 0) {
+            return $this->back_error('标签名称已存在！');
         }
 
-        $model = new Blogroll;
+        $model = new Tag;
 
         $model->title      = $title;
-        $model->link       = $request->link;
+        $model->color      = $request->color;
         $model->created_at = time();
 
         try {
             $model->save();
         } catch (Exception $e) {
             report($e);
-            return $this->back_error('添加友链失败！');
+            return $this->back_error('创建标签失败！');
         }
 
-        return $this->back_success('添加友链成功！');
+        return $this->back_success('标签创建成功！');
+
     }
 
     public function edit($id)
     {
-        $blogroll = Blogroll::find($id);
+        $tag = Tag::find($id);
 
-        return view('admin.blogroll.edit', compact('blogroll'));
+        return view('admin.tag.edit', compact('tag'));
     }
 
     public function handleEdit(Request $request, $id)
     {
         $title = $request->title;
 
-        if (Blogroll::where('title', '=', $title)->where('id', '!=', $id)->count() > 0) {
-            return $this->back_success('名称已存在！');
+        if (Tag::where('title', '=', $title)->where('id', '!=', $id)->count() > 0) {
+            return $this->back_error('标签名称已存在！');
         }
 
-        $model = Blogroll::find($id);
+        $model = Tag::find($id);
 
         $model->title = $title;
-        $model->link  = $request->link;
+        $model->color = $request->color;
 
         try {
             $model->save();
         } catch (Exception $e) {
             report($e);
-            return $this->back_error('更新失败！');
+            return $this->back_error('更新标签失败！');
         }
 
         return view('admin.common.close');

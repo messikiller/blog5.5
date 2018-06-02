@@ -38,6 +38,12 @@ Route::group([
     Route::get('/category/edit/{id}', 'CategoryController@edit')->name('admin.category.edit');
     Route::post('/category/edit/{id}', 'CategoryController@handleEdit')->name('admin.category.edit');
 
+    Route::get('/tag/index', 'TagController@list')->name('admin.tag.list');
+    Route::get('/tag/add', 'TagController@add')->name('admin.tag.add');
+    Route::post('/tag/add', 'TagController@handleAdd')->name('admin.tag.add');
+    Route::get('/tag/edit/{id}', 'TagController@edit')->name('admin.tag.edit');
+    Route::post('/tag/edit/{id}', 'TagController@handleEdit')->name('admin.tag.edit');
+
     Route::get('/blogroll/list', 'BlogrollController@list')->name('admin.blogroll.list');
     Route::get('/blogroll/add', 'BlogrollController@add')->name('admin.blogroll.add');
     Route::post('/blogroll/add', 'BlogrollController@handleAdd')->name('admin.blogroll.add');

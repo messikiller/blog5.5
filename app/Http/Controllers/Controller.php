@@ -10,4 +10,18 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function back_error($msg)
+    {
+        return back()->with('errors', [
+            ['type' => 'error', 'desc' => $msg]
+        ]);
+    }
+
+    protected function back_success($msg)
+    {
+        return back()->with('errors', [
+            ['type' => 'success', 'desc' => $msg]
+        ]);
+    }
 }

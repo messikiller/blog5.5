@@ -2,8 +2,8 @@
 
 @section('breadcrumb')
 <Breadcrumb>
-        <Breadcrumb-Item>友链管理</Breadcrumb-Item>
-        <Breadcrumb-Item>友链列表</Breadcrumb-Item>
+        <Breadcrumb-Item>分类管理</Breadcrumb-Item>
+        <Breadcrumb-Item>标签列表</Breadcrumb-Item>
     </Breadcrumb>
 @endsection
 
@@ -36,6 +36,7 @@
       :page-size="{{ $list->perPage() }}"
       :current="{{ $list->currentPage() }}"
       @on-change="handlePageChange"
+      show-total
       show-elevator>
  </Page>
 @endsection
@@ -50,7 +51,7 @@ var OPTION = {
         columns: [
             {title: '#', key: 'index'},
             {title: '名称', key: 'title'},
-            {title: '链接', key: 'link'},
+            {title: '颜色', key: 'color'},
             {title: '创建时间', key: 'created_at'},
             {title: '操作', key: 'action', render: (h, params) => {
                 return h('div', [
@@ -76,16 +77,16 @@ var OPTION = {
                         }
                     }, '编辑')
                 ]);
-            }}
+            }},
         ],
         table: [
             @foreach ($list as $item)
                 {
                     'index': '{{ $list->perPage() * ($list->currentPage() - 1) + $loop->iteration }}',
                     'title': '{{ $item->title }}',
-                    'link': '{!! $item->link !!}',
+                    'color': '{!! $item->color !!}',
                     'created_at': '{{ empty($item->created_at) ? '-' : date('Y-m-d', $item->created_at) }}',
-                    'edit_url': '{{ route('admin.blogroll.edit', $item->id) }}'
+                    'edit_url': '{{ route('admin.tag.edit', $item->id) }}'
                 }
                 @if (! $loop->last)
                 ,
@@ -93,7 +94,7 @@ var OPTION = {
             @endforeach
         ]
     },
-    method: {
+    methods: {
 
     }
 };

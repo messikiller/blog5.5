@@ -12,8 +12,8 @@ return [
         'icon'  => 'pricetags',
         'title' => '标签管理',
         'sub'   => [
-            '添加标签' => 'home.index',
-            '标签列表' => 'home.index',
+            '添加标签' => 'admin.tag.add',
+            '标签列表' => 'admin.tag.list',
         ],
     ],
     [

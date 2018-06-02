@@ -45,14 +45,10 @@ class CategoryController extends Controller
             $model->save();
         } catch (Exception $e) {
             report($e);
-            return back()->with('errors', [
-                ['type' => 'error', 'desc' => '添加分类失败！']
-            ]);
+            return $this->back_error('添加分类失败！');
         }
 
-        return back()->with('errors', [
-            ['type' => 'success', 'desc' => '添加分类成功！']
-        ]);
+        return $this->back_success('添加分类成功！');
     }
 
     public function edit(Request $request, $id)
@@ -75,9 +71,7 @@ class CategoryController extends Controller
             $model->save();
         } catch (Exception $e) {
             report($e);
-            return back()->with('errors', [
-                ['type' => 'error', 'desc' => '更新分类失败！']
-            ]);
+            return $this->back_error('更新分类失败！');
         }
 
         return view('admin.common.close');

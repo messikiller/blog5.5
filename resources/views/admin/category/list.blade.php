@@ -90,7 +90,7 @@ var OPTION = {
                         }
                     }, '编辑')
                 ]);
-            }},
+            }}
         ],
         table: [
             @foreach ($list as $item)
