@@ -4202,6 +4202,10 @@ laravel-mix@^1.0:
     webpack-notifier "^1.5.0"
     yargs "^8.0.1"
 
+layer-ce@^3.0.1:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/layer-ce/download/layer-ce-3.0.1.tgz#ec4a79d509baed09fe9b169b4d3e63bb49b77954"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/lazy-cache/download/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"

@@ -31,11 +31,13 @@ mix
    .js('resources/assets/js/admin.js', 'public/js/admin.js')
    .sass('resources/assets/sass/admin.scss', 'public/css/admin.css')
    .scripts([
-       'public/js/admin.js'
+       'public/js/admin.js',
+       'node_modules/layer-ce/build/layer.js'
    ], 'public/js/admin.js')
    .styles([
        'public/css/admin.css',
        'node_modules/font-awesome/css/font-awesome.min.css'
    ], 'public/css/admin.css')
+   .copy('node_modules/layer-ce/build/skin', 'public/js/skin')
    .version()
 ;

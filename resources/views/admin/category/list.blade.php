@@ -78,7 +78,14 @@ var OPTION = {
                         },
                         on: {
                             click: () => {
-                                window.location.href = params.row.edit_url;
+                                layer.open({
+                                    type: 2,
+                                    title: false,
+                                    shadeClose: true,
+                                    shade: 0.8,
+                                    area: ['60%', '70%'],
+                                    content: params.row.edit_url
+                                });
                             }
                         }
                     }, '编辑')
@@ -102,7 +109,7 @@ var OPTION = {
         ]
     },
     methods: {
-        
+
     }
 };
 </script>

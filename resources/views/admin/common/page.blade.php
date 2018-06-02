@@ -69,6 +69,15 @@ body{
 <script src="{{ mix('js/admin.js') }}"></script>
 @yield('script')
 <script type="text/javascript">
+function layer_success_reload()
+{
+    layer.closeAll();
+    layer.alert('操作成功！', {
+      icon: 1
+    }, function () {
+        window.location.reload(true);
+    })
+}
 var vm = new Vue(_.merge({
     el: '#app',
     methods: {

@@ -58,13 +58,29 @@ class CategoryController extends Controller
     public function edit(Request $request, $id)
     {
         $category = Category::find($id);
+        $fathers  = Category::where('pid', '=', 0)->orderBy('created_at', 'desc')->get();
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category', 'fathers'));
     }
 
     public function handleEdit(Request $request, $id)
     {
+        $model = Category::find($id);
 
+        $model->title = $request->title;
+        $model->pid   = $request->pid;
+        $model->sort  = $request->sort;
+
+        try {
+            $model->save();
+        } catch (Exception $e) {
+            report($e);
+            return back()->with('errors', [
+                ['type' => 'error', 'desc' => '更新分类失败！']
+            ]);
+        }
+
+        return view('admin.common.close');
     }
 
     private function _queryFilter($request, $query, &$filter = [])
