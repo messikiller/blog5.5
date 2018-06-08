@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
@@ -78,7 +77,7 @@ function layer_success_reload()
         window.location.reload(true);
     })
 }
-var vm = new Vue(_.merge({
+var vm = new Vue(__.merge({
     el: '#app',
     methods: {
         handlePageChange: function (page) {

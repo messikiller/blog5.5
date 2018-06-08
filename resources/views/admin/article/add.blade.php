@@ -12,20 +12,111 @@
 @endsection
 
 @section('content')
-<div id="editormd_id">
-    <textarea name="content" style="display:none;"></textarea>
-</div>
+<Row>
+    <i-col span="24">
+
+        @include('admin.common.error')
+
+        <i-form :model="form" :rules="rules" :label-width="120" ref="dataForm" method="post">
+            {{ csrf_field() }}
+            <Form-item label="标题：" prop="title" required>
+                <i-input name="title" v-model="form.title"></i-input>
+            </Form-item>
+            <Form-item label="分类：" prop="cate_id" required>
+                <i-select name="cate_id" v-model="form.cate_id" filterable clearable>
+                    @foreach ($categories as $cate)
+                        <i-option value="{{ $cate->id }}">{{ $cate->title }}</i-option>
+                    @endforeach
+                </i-select>
+            </Form-item>
+            <Form-item label="是否隐藏：" prop="is_hidden" required>
+                <i-select name="is_hidden" v-model="form.is_hidden" filterable clearable>
+                    @foreach (config('define.article.is_hidden') as $is_hidden)
+                        <i-option value="{{ $is_hidden['value'] }}">{{ $is_hidden['desc'] }}</i-option>
+                    @endforeach
+                </i-select>
+            </Form-item>
+            <Form-item label="摘要：" prop="summary" required>
+                <Row>
+                    <i-col span="12">
+                        <div style="padding-right: 5px;">
+                            <i-input type="textarea" name="content" v-model="form.summary"></i-input>
+                        </div>
+                    </i-col>
+                    <i-col span="12">
+                        <Card dis-hover>
+                            <div v-html="convert(form.summary)" style="padding: 5px;"></div>
+                        </Card>
+                    </i-col>
+                </Row>
+            </Form-item>
+            <Form-item label=""  prop="original_content">
+                <div id="editormd_id">
+                    <textarea name="content" style="display:none;"></textarea>
+                </div>
+            </Form-item>
+            <Form-item label="">
+                <i-button type="primary" @click="handleFormSubmit">提交</i-button>
+            </Form-item>
+        </i-form>
+    </i-col>
+</Row>
+
 @endsection
 
 @section('script')
 {!! editor_js() !!}
 <script type="text/javascript">
+var validateGeneral = (rule, value, callback) => {
+    if (value == '') {
+        callback(new Error('该字段不能为空！'));
+    } else {
+        callback();
+    }
+};
+
 var OPTION = {
     data: {
-
+        form: {
+            title:     '',
+            cate_id:   '',
+            is_hidden: '',
+            summary:   ''
+        },
+        rules: {
+            title: [
+                {validator: validateGeneral, trigger: 'blur'}
+            ],
+            cate_id: [
+                {validator: validateGeneral, trigger: 'blur'}
+            ],
+            is_hidden: [
+                {validator: validateGeneral, trigger: 'blur'}
+            ],
+            summary: [
+                {validator: validateGeneral, trigger: 'blur'}
+            ]
+        }
     },
-    method: {
-
+    methods: {
+        handleFormSubmit: function () {
+            this.$refs.dataForm.validate((valid) => {
+                if (valid) {
+                   this.$refs.dataForm.$el.submit();
+                } else {
+                   this.$Notice.warning({
+                       title: '提示',
+                       desc: '表单填写完整后提交！'
+                   });
+                }
+            });
+        },
+        convert: function (input) {
+            if (input == undefined) {
+                return;
+            }
+            return markdown.toHTML(input);
+        }
     }
 };
 </script>

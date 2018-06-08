@@ -19,7 +19,7 @@
                 <i-input name="title" v-model="form.title"></i-input>
             </Form-item>
             <Form-item label="父类：" prop="pid" required>
-                <i-select v-model="form.pid" name="pid" v-model="form.pid">
+                <i-select v-model="form.pid" name="pid">
                     @foreach ($fathers as $father)
                         <i-option value="{{ $father->id }}">{{ $father->title }}</i-option>
                     @endforeach

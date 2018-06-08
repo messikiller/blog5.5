@@ -9,6 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 window.URL = require('urijs');
+window.markdown = require('markdown').markdown;
 
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
