@@ -7,7 +7,7 @@
 @section('breadcrumb')
 <Breadcrumb>
         <Breadcrumb-Item>文章管理</Breadcrumb-Item>
-        <Breadcrumb-Item>发布文章</Breadcrumb-Item>
+        <Breadcrumb-Item>更新文章</Breadcrumb-Item>
     </Breadcrumb>
 @endsection
 
@@ -62,7 +62,7 @@
             </Form-item>
             <Form-item label=""  prop="original_content">
                 <div id="editormd_id">
-                    <textarea name="content_original" style="display:none;"></textarea>
+                    <textarea name="content_original" style="display:none;">{!! $article->content_original !!}</textarea>
                 </div>
             </Form-item>
             <Form-item label="">
@@ -96,12 +96,19 @@ var validateTags = (rule, value, callback) => {
 var OPTION = {
     data: {
         form: {
-            title:     '',
-            cate_id:   '',
-            is_hidden: '',
-            summary:   '',
-            published_at: '',
-            tag_ids: []
+            title:     '{{ $article->title }}',
+            cate_id:   '{{ $article->cate_id }}',
+            is_hidden: '{{ $article->is_hidden }}',
+            summary:   '{!! $article->summary_original !!}',
+            published_at: '{{ date('Y-m-d', $article->published_at) }}',
+            tag_ids: [
+                @foreach ($article->tags as $tag)
+                    '{{ $tag->id }}'
+                    @if (! $loop->last)
+                    ,
+                    @endif
+                @endforeach
+            ]
         },
         rules: {
             title: [

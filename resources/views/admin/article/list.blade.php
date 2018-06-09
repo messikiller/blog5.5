@@ -54,6 +54,11 @@ var OPTION = {
                         },
                         style: {
                             marginRight: '5px'
+                        },
+                        on: {
+                            click: () => {
+                                window.open(params.row.edit_url);
+                            }
                         }
                     }, '编辑')
                 ]);

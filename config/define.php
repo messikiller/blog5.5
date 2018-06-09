@@ -3,6 +3,7 @@ return [
     'app' => [
         'home_boxes_count'           => 6,
         'home_sider_archives_counts' => 10,
+        'life_category_id'           => 1,
     ],
     'cache' => [
         'home_nav_cates'        => ['key' => 'home.index.navCates', 'minutes' => 30],

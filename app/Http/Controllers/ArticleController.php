@@ -87,6 +87,12 @@ class ArticleController extends Controller
         $previous = Article::normal()->published()->where('published_at', '>', $point)->orderBy('created_at', 'asc')->first();
         $next     = Article::normal()->published()->where('published_at', '<', $point)->orderBy('created_at', 'desc')->first();
 
+        try {
+            $article->increment('read_num');
+        } catch (Exception $e) {
+            report($e);
+        }
+
         return view('home.view', compact('article', 'next', 'previous'));
     }
 }

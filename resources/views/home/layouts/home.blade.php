@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>blog</title>
+<title>messikiller's blog | 折而不挠，终不为下</title>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
