@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>messikiller's blog | 折而不挠，终不为下</title>
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" media="screen"/>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
