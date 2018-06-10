@@ -83,6 +83,12 @@ var vm = new Vue({
       window.addEventListener('scroll', this.handleScroll);
       hljs.initHighlightingOnLoad();
       $('[data-toggle="tooltip"]').tooltip();
+      $('#content img').on('click', function () {
+          $.fancybox.open({
+            	src  : $(this).attr('src'),
+            	type : 'image'
+            });
+      });
     },
     data: {
         sticky: false

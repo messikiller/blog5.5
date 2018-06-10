@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@fancyapps/fancybox@^3.3.5":
+  version "3.3.5"
+  resolved "http://registry.npm.taobao.org/@fancyapps/fancybox/download/@fancyapps/fancybox-3.3.5.tgz#e0bead520450ff0af51d353a17ac6bf864ba0f49"
+
 abbrev@1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/abbrev/download/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

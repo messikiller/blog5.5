@@ -239,6 +239,12 @@ $header-png-url: url('/images/header.png');
                     text-indent: 2em;
                 }
 
+                img {
+                    max-width: 100%;
+                    margin-left: -2em;
+                    cursor: pointer;
+                }
+
                 & > h2 {
                     border-bottom: 1px solid darken($navbar-default-bg, 10%);
                     padding-bottom: 5px;
