@@ -47,7 +47,7 @@ class ArticleController extends ApiController
                 'title'        => $article->title,
                 'summary'      => $article->summary,
                 'cate_id'      => $article->cate_id,
-                'cate_title'   => optional($article->cate)->title,
+                'cate_title'   => strval(optional($article->cate)->title),
                 'tags'         => $tags,
                 'read_num'     => $article->read_num,
                 'published_at' => $article->published_at
@@ -62,8 +62,13 @@ class ArticleController extends ApiController
         return $this->success($data, $ext);
     }
 
-    public function view(Request $request, $id)
+    public function view(Request $request)
     {
+        $id = intval($request->input('id', 0));
+        if ($id <= 0) {
+            return $this->failed();
+        }
+
         $article = Article::find($id);
 
         $tags = [];
@@ -81,7 +86,7 @@ class ArticleController extends ApiController
             'title'        => $article->title,
             'summary'      => $article->summary,
             'cate_id'      => $article->cate_id,
-            'cate_title'   => $article->category->title,
+            'cate_title'   => strval(optional($article->cate)->title),
             'tags'         => $tags,
             'read_num'     => $article->read_num,
             'published_at' => $article->published_at,

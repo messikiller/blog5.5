@@ -17,5 +17,5 @@ Route::group([
     'namespace' => 'Api'
 ], function () {
     Route::get('/article/list', 'ArticleController@list')->name('api.article.list');
-    Route::get('/article/view/{id}', 'ArticleController@view')->name('api.article.view');
+    Route::get('/article/view', 'ArticleController@view')->name('api.article.view');
 });
