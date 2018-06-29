@@ -18,11 +18,11 @@ class ApiController extends Controller
 
     protected function success($data = [], $ext = [])
     {
-        return $this->response(self::STATUS_OK, $data, $ext)
+        return $this->response(self::STATUS_OK, $data, $ext);
     }
 
     protected function failed($data = [], $ext = [])
     {
-        return $this->response(self::STATUS_FAILED, $data, $ext)
+        return $this->response(self::STATUS_FAILED, $data, $ext);
     }
 }
