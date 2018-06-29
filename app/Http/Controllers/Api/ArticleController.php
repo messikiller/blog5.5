@@ -47,7 +47,7 @@ class ArticleController extends ApiController
                 'title'        => $article->title,
                 'summary'      => $article->summary,
                 'cate_id'      => $article->cate_id,
-                'cate_title'   => $article->category->title,
+                'cate_title'   => optional($article->cate)->title,
                 'tags'         => $tags,
                 'read_num'     => $article->read_num,
                 'published_at' => $article->published_at
