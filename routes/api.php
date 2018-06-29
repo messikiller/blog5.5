@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'namespace' => 'Api'
+], function () {
+    Route::get('/article/list', 'ArticleController@list')->name('api.article.list');
+    Route::get('/article/view/{id}', 'ArticleController@view')->name('api.article.view');
 });
